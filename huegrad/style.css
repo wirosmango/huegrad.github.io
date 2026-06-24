@@ -1,1 +1,54 @@
-dildo
+ .slider {
+            width: 500px; /* Фиксированная ширина */
+            overflow: hidden; /* Скрываем выходящие за границы изображения */
+            position: relative;
+        }
+
+        /* Контейнер, в котором будут находиться все слайды */
+        .slides {
+            display: flex; /* Располагаем слайды в ряд */
+            width: 300%; /* Делаем ширину в три раза больше (по количеству слайдов) */
+            transition: transform 0.5s ease-in-out; /* Плавное переключение слайдов */
+        }
+
+        /* Каждый отдельный слайд */
+        .slide {
+            width: 100%; /* Каждый слайд занимает всю ширину контейнера */
+            flex-shrink: 0; /* Запрещаем уменьшение элементов внутри flex-контейнера */
+        }
+
+        /* Убираем отображение радиокнопок, они нужны только для управления */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* Переключение слайдов при выборе радиокнопки */
+        #slide1:checked ~ .slides { transform: translateX(0%); }   /* Первый слайд */
+        #slide2:checked ~ .slides { transform: translateX(-100%); } /* Второй слайд */
+        #slide3:checked ~ .slides { transform: translateX(-200%); } /* Третий слайд */
+
+        /* Контейнер для точек управления (индикаторов) */
+        .controls {
+            text-align: center; /* Размещаем точки по центру */
+            margin-top: 10px; /* Добавляем отступ сверху */
+        }
+
+        /* Стиль для точек переключения */
+        .controls label {
+            display: inline-block; /* Размещаем точки в строку */
+            width: 15px; /* Размер точки */
+            height: 15px;
+            background: gray; /* Серый цвет точки */
+            border-radius: 50%; /* Делаем точки круглыми */
+            margin: 5px; /* Добавляем небольшой отступ между ними */
+            cursor: pointer; /* Делаем курсор в виде руки при наведении */
+        }
+
+        /* Меняем цвет активной точки при выборе слайда */
+        input:checked + label {
+            background: black;
+        }
+ul {
+    background-color: black;
+    color: white;
+}
