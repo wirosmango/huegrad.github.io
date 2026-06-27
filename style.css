@@ -52,3 +52,26 @@ ul {
     background-color: black;
     color: white;
 }
+.card {
+  width: 300px; /* Ширина карточки */
+  border-radius: 10px; /* Закругляем углы */
+  overflow:-moz-hidden-unscrollable; /* Прячем все, что выходит за углы */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем мягкую тень */
+  font-family: sans-serif; /* Простой шрифт */
+}
+
+.card img {
+  width: 100%; /* Картинка занимает всю ширину */
+  height: auto;
+}
+
+.cards-container {
+  display: flex; /* Включаем Flexbox */
+  gap: 20px; /* Расстояние между карточками */
+  flex-wrap: wrap; /* Карточки переносятся на новую строку, если не влезают */
+  justify-content: flex-start; 
+}
+
+.card h2 {
+  margin-top: 0;
+}
