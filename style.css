@@ -1,6 +1,12 @@
- ul {
-    background-color: black;
-    color: white;
+ul {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #cdd6f4;
+  background-color: #585b70;
+}
+.body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #cdd6f4;
+  background-color: #1e1e2e;
 }
 .card {
   width: 300px; /* Ширина карточки */
