@@ -18,7 +18,7 @@ body {
 }
 
 .card img {
-  width: 100%; /* Картинка занимает всю ширину */
+  width: 80%; /* Картинка занимает всю ширину */
   height: auto;
 }
 
@@ -31,4 +31,17 @@ body {
 
 .card h2 {
   margin-top: 0;
+}
+
+
+.glide {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.glide__slide img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
 }
