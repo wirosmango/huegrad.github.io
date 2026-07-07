@@ -2,6 +2,7 @@ ul {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #cdd6f4;
   background-color: #585b70;
+  border-radius: 5px;
 }
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -64,4 +65,17 @@ header {
     color: white;    /* Цвет текста */
     text-decoration: none; /* Убирает подчеркивание */
     margin: 0 15px;  /* Расстояние между ссылками */
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 5px 5px; 
+}
+
+a:hover {
+    color: #cdd6f4;
+    background-color: #1e1e2e;
+    border-radius: 5px;
 }
