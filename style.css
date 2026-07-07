@@ -45,3 +45,23 @@ body {
   object-fit: cover;
   display: block;
 }
+header {
+  background-image: url(https://raw.githubusercontent.com/wirosmango/huegrad.github.io/refs/heads/main/huegrad/images/huegrad.jpg);
+  padding: 20px;
+  text-align: center;
+}
+
+.top-menu {
+    position: bottom; /* Закрепляет меню на экране */
+    top: 0;          /* Прижимает к верхнему краю */
+    left: 0;         /* Прижимает к левому краю */
+    width: 100%;     /* Растягивает меню на весь экран */
+    background-color: transparent; /* Цвет фона */
+    padding: 10px 0; /* Отступы сверху и снизу */
+}
+
+.top-menu a {
+    color: white;    /* Цвет текста */
+    text-decoration: none; /* Убирает подчеркивание */
+    margin: 0 15px;  /* Расстояние между ссылками */
+}
