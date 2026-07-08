@@ -12,7 +12,7 @@ body {
 }
 .card {
   width: 300px; /* Ширина карточки */
-  border-radius: 10px; /* Закругляем углы */
+  border-radius: 20px; /* Закругляем углы */
   overflow:-moz-hidden-unscrollable; /* Прячем все, что выходит за углы */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем мягкую тень */
   font-family: sans-serif; /* Простой шрифт */
@@ -27,7 +27,7 @@ body {
   display: flex; /* Включаем Flexbox */
   gap: 20px; /* Расстояние между карточками */
   flex-wrap: wrap; /* Карточки переносятся на новую строку, если не влезают */
-  justify-content: flex-start; 
+  justify-content: center; 
 }
 
 .card h2 {
@@ -78,4 +78,20 @@ a:hover {
     color: #cdd6f4;
     background-color: #1e1e2e;
     border-radius: 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+.mellstroj {
+  text-align: center;
+}
+
+.anthem {
+  text-align: center;
+}
+
+.drochka {
+  text-align: center;
 }
