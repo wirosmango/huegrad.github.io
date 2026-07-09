@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Index of /mods/files</title>
+</head>
+<body>
+
+    <h1>Index of /mods/files</h1>
+    <hr>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Size</th>
+        </tr>
+        <tbody id="file-list">
+            <tr><td colspan="2">Загрузка списка файлов...</td></tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <script>
+        const owner = 'wirosmango';
+        const repo = 'huegrad.github.io';
+        const path = 'mods/files';
+
+        fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
+            .then(response => response.json())
+            .then(files => {
+                const tbody = document.getElementById('file-list');
+                tbody.innerHTML = '';
+
+                if (Array.isArray(files)) {
+                    files.forEach(file => {
+                        if (file.type === 'file') {
+
+                            let size = file.size;
+                            let sizeStr = size + ' B';
+                            if (size > 1024) sizeStr = (size / 1024).toFixed(2) + ' KB';
+                            if (size > 1024 * 1024) sizeStr = (size / (1024 * 1024)).toFixed(2) + ' MB';
+
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                <td><a href="${file.download_url}">${file.name}</a></td>
+                                <td>${sizeStr}</td>
+                            `;
+                            tbody.appendChild(tr);
+                        }
+                    });
+                } else {
+                    tbody.innerHTML = `<tr><td colspan="2">Ошибка: ${files.message || 'Папка не найдена'}</td></tr>`;
+                }
+            })
+            .catch(error => {
+                document.getElementById('file-list').innerHTML = 
+                    `<tr><td colspan="2">Ошибка загрузки: ${error}</td></tr>`;
+            });
+    </script>
+
+</body>
+</html>
