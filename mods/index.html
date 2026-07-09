@@ -2,90 +2,79 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Index of /mods/files</title>
+    <title>Index of /mods/files/</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background-color: #fff; color: #000; }
+        h1 { font-size: 1.5em; font-weight: normal; }
+        hr { border: 0; border-top: 1px solid #ccc; }
+        a { text-decoration: none; color: #0000ee; }
+        a:hover { text-decoration: underline; }
+        table { border-collapse: collapse; min-width: 600px; }
+        th { text-align: left; padding: 0 20px 10px 0; }
+        td { padding: 2px 20px 2px 0; white-space: nowrap; }
+    </style>
 </head>
 <body>
-
-    <h1>Index of /mods/files</h1>
+    <h1>Index of /mods/files/</h1>
     <hr>
     <table>
         <tr>
             <th>Name</th>
+            <th>Last modified</th>
             <th>Size</th>
         </tr>
-        <tbody id="file-list">
-            <tr><td colspan="2">Загрузка списка файлов...</td></tr>
-        </tbody>
+        <tr>
+            <td><a href="../">../</a></td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td><a href="files/Warium-1.2.8-1.20.1.jar">Warium-1.2.8-1.20.1.jar</a></td>
+            <td>04-Jul-2026 09:48</td>
+            <td>12.1 MB</td>
+        </tr>
+        <tr>
+            <td><a href="files/create-1.20.1-6.0.8.jar">create-1.20.1-6.0.8.jar</a></td>
+            <td>19-Jun-2026 02:57</td>
+            <td>18.3 MB</td>
+        </tr>
+        <tr>
+            <td><a href="files/curios-forge-5.14.1+1.20.1.jar">curios-forge-5.14.1+1.20.1.jar</a></td>
+            <td>06-Jul-2026 22:35</td>
+            <td>388.7 KB</td>
+        </tr>
+        <tr>
+            <td><a href="files/effortlessbuilding-1.20.1-3.10.jar">effortlessbuilding-1.20.1-3.10.jar</a></td>
+            <td>11-May-2026 05:50</td>
+            <td>2.2 MB</td>
+        </tr>
+        <tr>
+            <td><a href="files/geckolib-forge-1.20.1-4.8.4.jar">geckolib-forge-1.20.1-4.8.4.jar</a></td>
+            <td>04-Jul-2026 05:34</td>
+            <td>1013.9 KB</td>
+        </tr>
+        <tr>
+            <td><a href="files/kotlinforforge-4.12.0-all.jar">kotlinforforge-4.12.0-all.jar</a></td>
+            <td>06-Jul-2026 22:34</td>
+            <td>7.1 MB</td>
+        </tr>
+        <tr>
+            <td><a href="files/pointblank-forge-1.20.1-1.11.1.jar">pointblank-forge-1.20.1-1.11.1.jar</a></td>
+            <td>06-Jul-2026 22:31</td>
+            <td>16.6 MB</td>
+        </tr>
+        <tr>
+            <td><a href="files/superbwarfare-0.8.9-hotfix2-mc1.20.1-a3c46074e-all.jar">superbwarfare-0.8.9-hotfix2-mc1.20.1-a3c46074e-all.jar</a></td>
+            <td>06-Jul-2026 22:14</td>
+            <td>30.2 MB</td>
+        </tr>
+        <tr>
+            <td><a href="files/voicechat-forge-1.20.1-2.6.18.jar">voicechat-forge-1.20.1-2.6.18.jar</a></td>
+            <td>16-Jun-2026 20:14</td>
+            <td>4.7 MB</td>
+        </tr>
     </table>
     <hr>
-
-        <script>
-        const owner = 'wirosmango';
-        const repo = 'huegrad.github.io';
-        const path = 'mods/files';
-
-        // Настройки кэша
-        const cacheKey = 'huegrad_mods_cache';
-        const cacheTimeKey = 'huegrad_mods_cache_time';
-        const cacheDuration = 60 * 60 * 1000; // Хранить кэш 1 час (3600000 мс)
-
-        function renderFiles(files) {
-            const tbody = document.getElementById('file-list');
-            tbody.innerHTML = '';
-
-            if (Array.isArray(files)) {
-                files.forEach(file => {
-                    if (file.type === 'file') {
-                        let size = file.size;
-                        let sizeStr = size + ' B';
-                        if (size > 1024) sizeStr = (size / 1024).toFixed(2) + ' KB';
-                        if (size > 1024 * 1024) sizeStr = (size / (1024 * 1024)).toFixed(2) + ' MB';
-
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td><a href="${file.download_url}">${file.name}</a></td>
-                            <td>${sizeStr}</td>
-                        `;
-                        tbody.appendChild(tr);
-                    }
-                });
-            } else {
-                tbody.innerHTML = `<tr><td colspan="2">Ошибка: ${files.message || 'Папка не найдена'}</td></tr>`;
-            }
-        }
-
-        // Проверяем, есть ли свежий кэш
-        const cachedData = localStorage.getItem(cacheKey);
-        const cachedTime = localStorage.getItem(cacheTimeKey);
-
-        if (cachedData && cachedTime && (Date.now() - cachedTime < cacheDuration)) {
-            // Если кэш есть и он свежий — рисуем из него, API не трогаем!
-            renderFiles(JSON.parse(cachedData));
-        } else {
-            // Если кэша нет или он старый — идем на GitHub API
-            fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
-                .then(response => {
-                    if (!response.ok) throw new Error('API Error');
-                    return response.json();
-                })
-                .then(files => {
-                    // Сохраняем ответ в кэш браузера
-                    localStorage.setItem(cacheKey, JSON.stringify(files));
-                    localStorage.setItem(cacheTimeKey, Date.now());
-                    renderFiles(files);
-                })
-                .catch(error => {
-                    // Если API снова заблокировал, пытаемся показать хотя бы старый кэш
-                    if (cachedData) {
-                        console.warn('API недоступен, показываем старый кэш');
-                        renderFiles(JSON.parse(cachedData));
-                    } else {
-                        document.getElementById('file-list').innerHTML = 
-                            `<tr><td colspan="2">Ошибка загрузки (лимит API): ${error}</td></tr>`;
-                    }
-                });
-        }
-    </script>
-
 </body>
 </html>
