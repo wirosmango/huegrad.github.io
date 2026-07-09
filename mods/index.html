@@ -19,42 +19,72 @@
     </table>
     <hr>
 
-    <script>
+        <script>
         const owner = 'wirosmango';
         const repo = 'huegrad.github.io';
         const path = 'mods/files';
 
-        fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
-            .then(response => response.json())
-            .then(files => {
-                const tbody = document.getElementById('file-list');
-                tbody.innerHTML = '';
+        // Настройки кэша
+        const cacheKey = 'huegrad_mods_cache';
+        const cacheTimeKey = 'huegrad_mods_cache_time';
+        const cacheDuration = 60 * 60 * 1000; // Хранить кэш 1 час (3600000 мс)
 
-                if (Array.isArray(files)) {
-                    files.forEach(file => {
-                        if (file.type === 'file') {
+        function renderFiles(files) {
+            const tbody = document.getElementById('file-list');
+            tbody.innerHTML = '';
 
-                            let size = file.size;
-                            let sizeStr = size + ' B';
-                            if (size > 1024) sizeStr = (size / 1024).toFixed(2) + ' KB';
-                            if (size > 1024 * 1024) sizeStr = (size / (1024 * 1024)).toFixed(2) + ' MB';
+            if (Array.isArray(files)) {
+                files.forEach(file => {
+                    if (file.type === 'file') {
+                        let size = file.size;
+                        let sizeStr = size + ' B';
+                        if (size > 1024) sizeStr = (size / 1024).toFixed(2) + ' KB';
+                        if (size > 1024 * 1024) sizeStr = (size / (1024 * 1024)).toFixed(2) + ' MB';
 
-                            const tr = document.createElement('tr');
-                            tr.innerHTML = `
-                                <td><a href="${file.download_url}">${file.name}</a></td>
-                                <td>${sizeStr}</td>
-                            `;
-                            tbody.appendChild(tr);
-                        }
-                    });
-                } else {
-                    tbody.innerHTML = `<tr><td colspan="2">Ошибка: ${files.message || 'Папка не найдена'}</td></tr>`;
-                }
-            })
-            .catch(error => {
-                document.getElementById('file-list').innerHTML = 
-                    `<tr><td colspan="2">Ошибка загрузки: ${error}</td></tr>`;
-            });
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><a href="${file.download_url}">${file.name}</a></td>
+                            <td>${sizeStr}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    }
+                });
+            } else {
+                tbody.innerHTML = `<tr><td colspan="2">Ошибка: ${files.message || 'Папка не найдена'}</td></tr>`;
+            }
+        }
+
+        // Проверяем, есть ли свежий кэш
+        const cachedData = localStorage.getItem(cacheKey);
+        const cachedTime = localStorage.getItem(cacheTimeKey);
+
+        if (cachedData && cachedTime && (Date.now() - cachedTime < cacheDuration)) {
+            // Если кэш есть и он свежий — рисуем из него, API не трогаем!
+            renderFiles(JSON.parse(cachedData));
+        } else {
+            // Если кэша нет или он старый — идем на GitHub API
+            fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`)
+                .then(response => {
+                    if (!response.ok) throw new Error('API Error');
+                    return response.json();
+                })
+                .then(files => {
+                    // Сохраняем ответ в кэш браузера
+                    localStorage.setItem(cacheKey, JSON.stringify(files));
+                    localStorage.setItem(cacheTimeKey, Date.now());
+                    renderFiles(files);
+                })
+                .catch(error => {
+                    // Если API снова заблокировал, пытаемся показать хотя бы старый кэш
+                    if (cachedData) {
+                        console.warn('API недоступен, показываем старый кэш');
+                        renderFiles(JSON.parse(cachedData));
+                    } else {
+                        document.getElementById('file-list').innerHTML = 
+                            `<tr><td colspan="2">Ошибка загрузки (лимит API): ${error}</td></tr>`;
+                    }
+                });
+        }
     </script>
 
 </body>
