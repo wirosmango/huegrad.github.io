@@ -1,3 +1,4 @@
+# работай мой клод код, работай!
 import os
 import time
 
