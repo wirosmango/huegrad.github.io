@@ -95,3 +95,29 @@ a:hover {
 .drochka {
   text-align: center;
 }
+
+.animated-gradient {
+  /* Задаем линейный градиент с четырьмя цветами */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  /* Делаем фоновое изображение в 4 раза больше контейнера */
+  background-size: 400% 400%;
+  /* Применяем анимацию с длительностью 15 секунд, бесконечно и с плавным переходом */
+  animation: gradientShift 15s ease infinite;
+   -webkit-background-clip: text;
+   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Описываем ключевые кадры движения */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
