@@ -47,7 +47,7 @@ body {
   display: block;
 }
 header {
-  background-image: url(https://raw.githubusercontent.com/wirosmango/huegrad.github.io/refs/heads/main/huegrad/images/huegrad.jpg);
+  background-image: url(huegrad/images/huegrad.jpg);
   padding: 20px;
   text-align: center;
 }
