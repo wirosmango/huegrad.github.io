@@ -39,38 +39,45 @@ html_content = """<!DOCTYPE html>
         </tr>
 """
 
-# Читаем файлы, сортируем по алфавиту
+# Читаем содержимое папки, сортируем по алфавиту
 try:
-    files = sorted(os.listdir(FILES_DIR))
+    entries = sorted(os.listdir(FILES_DIR))
 except FileNotFoundError:
     print(f"Ошибка: Папка {FILES_DIR} не найдена!")
     exit(1)
 
-for filename in files:
-    file_path = os.path.join(FILES_DIR, filename)
-    
-    # Пропускаем папки (если вдруг там появятся)
-    if not os.path.isfile(file_path):
-        continue
-        
-    # Берем инфу о файле
-    stat = os.stat(file_path)
-    
-    # Форматируем дату, как на сервере Gentoo
+files_count = 0
+dirs_count = 0
+
+for entry_name in entries:
+    entry_path = os.path.join(FILES_DIR, entry_name)
+    is_dir = os.path.isdir(entry_path)
+
+    # Инфа для даты нужна в любом случае
+    stat = os.stat(entry_path)
     mtime = time.strftime('%d-%b-%Y %H:%M', time.localtime(stat.st_mtime))
-    
-    # Считаем размер (в KB или MB для красоты)
-    size_bytes = stat.st_size
-    if size_bytes < 1024 * 1024:
-        size_str = f"{size_bytes / 1024:.1f} KB"
+
+    if is_dir:
+        # Папки: имя со слешем, ссылка на подпапку, размер не считаем
+        display_name = f"{entry_name}/"
+        href = f"files/{entry_name}/"
+        size_str = "-"
+        dirs_count += 1
     else:
-        size_str = f"{size_bytes / (1024 * 1024):.1f} MB"
-        
-    # Записываем строку таблицы. 
-    # ВАЖНО: href ведет на "files/название.jar"
+        display_name = entry_name
+        href = f"files/{entry_name}"
+
+        # Считаем размер (в KB или MB для красоты)
+        size_bytes = stat.st_size
+        if size_bytes < 1024 * 1024:
+            size_str = f"{size_bytes / 1024:.1f} KB"
+        else:
+            size_str = f"{size_bytes / (1024 * 1024):.1f} MB"
+        files_count += 1
+
     html_content += f"""
         <tr>
-            <td><a href="files/{filename}">{filename}</a></td>
+            <td><a href="{href}">{display_name}</a></td>
             <td>{mtime}</td>
             <td>{size_str}</td>
         </tr>"""
@@ -87,4 +94,4 @@ html_content += """
 with open(OUTPUT_HTML, 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print(f"Успех! Файл {OUTPUT_HTML} сгенерирован. Найдено модов: {len(files)}.")
+print(f"Успех! Файл {OUTPUT_HTML} сгенерирован. Файлов: {files_count}, папок: {dirs_count}.")
