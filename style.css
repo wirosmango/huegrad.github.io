@@ -85,7 +85,15 @@ a:hover {
 }
 
 .soundcloud {
-  text-align: center;
+  text-align: center; 
+  color: #cccccc;
+  line-break: anywhere;
+  word-break: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+  font-family: Lucida Sans Unicode,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 100;
 }
 
 .mellstroj {
@@ -125,3 +133,4 @@ a:hover {
     background-position: 0% 50%;
   }
 }
+
