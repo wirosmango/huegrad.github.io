@@ -2,29 +2,40 @@
 import os
 import time
 
-# Настройки путей (относительно корня репозитория)
-FILES_DIR = "mods/files"
-OUTPUT_HTML = "mods/index.html"
+# Корень, который сканируем рекурсивно.
+# Индекс будет сгенерирован ВНУТРИ этой папки и внутри каждой её подпапки.
+ROOT_DIR = "mods"
 
-# HTML-шапка (стилизована под серверный индекс Apache/Nginx)
-html_content = """<!DOCTYPE html>
+
+def format_size(size_bytes):
+    if size_bytes < 1024 * 1024:
+        return f"{size_bytes / 1024:.1f} KB"
+    else:
+        return f"{size_bytes / (1024 * 1024):.1f} MB"
+
+
+def generate_index(dir_path, title_path):
+    """Генерирует index.html внутри dir_path со списком его непосредственного содержимого."""
+    entries = sorted(os.listdir(dir_path))
+
+    html = f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Index of /mods/files/</title>
+    <title>Index of /{title_path}/</title>
     <style>
-        body { font-family: monospace; padding: 20px; background-color: #fff; color: #000; }
-        h1 { font-size: 1.5em; font-weight: normal; }
-        hr { border: 0; border-top: 1px solid #ccc; }
-        a { text-decoration: none; color: #0000ee; }
-        a:hover { text-decoration: underline; }
-        table { border-collapse: collapse; min-width: 600px; }
-        th { text-align: left; padding: 0 20px 10px 0; }
-        td { padding: 2px 20px 2px 0; white-space: nowrap; }
+        body {{ font-family: monospace; padding: 20px; background-color: #fff; color: #000; }}
+        h1 {{ font-size: 1.5em; font-weight: normal; }}
+        hr {{ border: 0; border-top: 1px solid #ccc; }}
+        a {{ text-decoration: none; color: #0000ee; }}
+        a:hover {{ text-decoration: underline; }}
+        table {{ border-collapse: collapse; min-width: 600px; }}
+        th {{ text-align: left; padding: 0 20px 10px 0; }}
+        td {{ padding: 2px 20px 2px 0; white-space: nowrap; }}
     </style>
 </head>
 <body>
-    <h1>Index of /mods/files/</h1>
+    <h1>Index of /{title_path}/</h1>
     <hr>
     <table>
         <tr>
@@ -39,59 +50,59 @@ html_content = """<!DOCTYPE html>
         </tr>
 """
 
-# Читаем содержимое папки, сортируем по алфавиту
-try:
-    entries = sorted(os.listdir(FILES_DIR))
-except FileNotFoundError:
-    print(f"Ошибка: Папка {FILES_DIR} не найдена!")
-    exit(1)
+    files_count = 0
+    dirs_count = 0
 
-files_count = 0
-dirs_count = 0
+    for entry_name in entries:
+        if entry_name == "index.html":
+            continue  # не показываем сам индекс в его же списке
 
-for entry_name in entries:
-    entry_path = os.path.join(FILES_DIR, entry_name)
-    is_dir = os.path.isdir(entry_path)
+        entry_path = os.path.join(dir_path, entry_name)
+        is_dir = os.path.isdir(entry_path)
+        stat = os.stat(entry_path)
+        mtime = time.strftime('%d-%b-%Y %H:%M', time.localtime(stat.st_mtime))
 
-    # Инфа для даты нужна в любом случае
-    stat = os.stat(entry_path)
-    mtime = time.strftime('%d-%b-%Y %H:%M', time.localtime(stat.st_mtime))
-
-    if is_dir:
-        # Папки: имя со слешем, ссылка на подпапку, размер не считаем
-        display_name = f"{entry_name}/"
-        href = f"files/{entry_name}/"
-        size_str = "-"
-        dirs_count += 1
-    else:
-        display_name = entry_name
-        href = f"files/{entry_name}"
-
-        # Считаем размер (в KB или MB для красоты)
-        size_bytes = stat.st_size
-        if size_bytes < 1024 * 1024:
-            size_str = f"{size_bytes / 1024:.1f} KB"
+        if is_dir:
+            display_name = f"{entry_name}/"
+            href = f"{entry_name}/"
+            size_str = "-"
+            dirs_count += 1
         else:
-            size_str = f"{size_bytes / (1024 * 1024):.1f} MB"
-        files_count += 1
+            display_name = entry_name
+            href = entry_name
+            size_str = format_size(stat.st_size)
+            files_count += 1
 
-    html_content += f"""
+        html += f"""
         <tr>
             <td><a href="{href}">{display_name}</a></td>
             <td>{mtime}</td>
             <td>{size_str}</td>
         </tr>"""
 
-# Закрываем теги
-html_content += """
+    html += """
     </table>
     <hr>
 </body>
 </html>
 """
 
-# Сохраняем в mods/index.html
-with open(OUTPUT_HTML, 'w', encoding='utf-8') as f:
-    f.write(html_content)
+    output_path = os.path.join(dir_path, "index.html")
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(html)
 
-print(f"Успех! Файл {OUTPUT_HTML} сгенерирован. Файлов: {files_count}, папок: {dirs_count}.")
+    print(f"OK: {output_path} (файлов: {files_count}, папок: {dirs_count})")
+
+
+def walk_and_generate(root_dir):
+    if not os.path.isdir(root_dir):
+        print(f"Ошибка: папка {root_dir} не найдена!")
+        return
+
+    for current_dir, _, _ in os.walk(root_dir):
+        title_path = current_dir.replace(os.sep, "/")
+        generate_index(current_dir, title_path)
+
+
+if __name__ == "__main__":
+    walk_and_generate(ROOT_DIR)
