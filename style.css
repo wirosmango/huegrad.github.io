@@ -23,6 +23,52 @@ body {
   height: auto;
 }
 
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* ровно 3 карточки в ряд */
+  gap: 20px;
+}
+
+.cards-news {
+  display: flex;
+  align-items: stretch;
+  width: 500px;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #1e1e2e;
+  display: flex;
+}
+
+.card-newzzz {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;        /* видео не сжимается */
+}
+
+.card-content {
+  padding: 16px;
+  background: #1e1e2e;   /* фон текстового блока — можно другой, чем у карточки */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #cdd6f4;
+}
+
+.card-text {
+  margin: 0;
+  font-size: 14px;
+  color: #b9c1dc;
+}
+
 .cards-container {
   display: flex; /* Включаем Flexbox */
   gap: 20px; /* Расстояние между карточками */
@@ -131,6 +177,17 @@ a:hover {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 900px) {
+  .cards-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .cards-row {
+    grid-template-columns: 1fr;
   }
 }
 
