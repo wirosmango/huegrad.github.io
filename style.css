@@ -16,6 +16,7 @@ body {
   overflow:-moz-hidden-unscrollable; /* Прячем все, что выходит за углы */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем мягкую тень */
   font-family: sans-serif; /* Простой шрифт */
+  max-width: 50%;
 }
 
 .card img {
@@ -23,52 +24,59 @@ body {
   height: auto;
 }
 
-.cards-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);   /* ровно 3 карточки в ряд */
-  gap: 20px;
-}
-
-.cards-news {
-  display: flex;
-  align-items: stretch;
+.card-video {
   width: 500px;
-  max-width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background: #1e1e2e;
-  display: flex;
-}
-
-.card-newzzz {
-  width: 50%;
-  height: auto;
-  object-fit: cover;
+  max-width: 100%;         /* фиксированная высота */
+  object-fit: cover;     /* обрезает видео под размер, без искажений */
   display: block;
-  flex-shrink: 0;        /* видео не сжимается */
 }
 
-.card-content {
-  padding: 16px;
-  background: #1e1e2e;   /* фон текстового блока — можно другой, чем у карточки */
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 3%;
+  margin-left: 20%;
+  margin-right: 20%;
+  border: 2px solid #585887;
+  background: #1e1e2e;
+
+}
+.news-item {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: baseline;
+  gap: 12px;
+  padding: 3px 20px;
+  justify-content: left;
 }
-
-.card-title {
-  margin: 0 0 8px;
-  font-size: 18px;
+.news-item time {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: #888;
+  width: 90px;
+}
+.news-item a {
   color: #cdd6f4;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.news-item a:hover {
+  text-decoration: underline;
 }
 
-.card-text {
-  margin: 0;
-  font-size: 14px;
-  color: #b9c1dc;
+.news {
+  justify-content: center
+  margin-top: 3%;
+  margin-left: 20%;
+  margin-right: 20%;
+  border: 2px solid #585887;
+  background: #1e1e2e;
+  padding-left: 2%;
 }
 
+.card-video {
+  padding-bottom: 1%;
+}
 .cards-container {
   display: flex; /* Включаем Flexbox */
   gap: 20px; /* Расстояние между карточками */
@@ -186,8 +194,12 @@ a:hover {
   }
 }
 @media (max-width: 500px) {
-  .cards-row {
-    grid-template-columns: 1fr;
+  .news-list {
+    margin-top: 15%;
+    border: 0px;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
   }
 }
 
