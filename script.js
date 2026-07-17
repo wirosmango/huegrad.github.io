@@ -24,3 +24,5 @@ function updateRelativeTimes() {
 
 updateRelativeTimes();
 setInterval(updateRelativeTimes, 60000); // обновление каждую минуту
+
+// я пидорас
