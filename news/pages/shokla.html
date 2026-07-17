@@ -25,33 +25,36 @@
     <div class="news">
         <h1>Достроена Школа №1 г. Хуеград им. Александра Дугина</h1>
         <p>Спустя несколько дней наконец была достроена Школа №1 г. Хуеград им. Александра Дугина, которая готова
-            обучить до 67 учеников<br>
-            Пока что у редакции есть только старые фотки</p>
+            обучить до 67 учеников.<br>
+            Пока что у редакции есть только старые фотки.</p>
+
         <div class="glide">
             <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
-                    <li class="glide__slide"><img src="news/content/shokla1.jpg"></li>
-                    <li class="glide__slide"><img src="news/content/shokla2.jpg"></li>
-                    <li class="glide__slide"><img src="news/content/shokla3.jpg"></li>
-                    <li class="glide__slide"><img src="news/content/shokla4.jpg"></li>
-                    <li class="glide__slide"><img src="news/content/shokla5.jpg"></li>
-                    <li class="glide__slide"><img src="news/content/shokla6.jpg"></li>
-                    <li class="glide__slide"><img src="news/content/shokla7.jpg"></li>
-                    <li class="glide__slide"><img src="news/content/shokla8.jpg"></li>
-                    <li class="glide__slide"><img src="news/content/shokla9.jpg"></li>
-
+                    <li class="glide__slide"><img src="news/content/shokla1.jpg" alt=""></li>
+                    <li class="glide__slide"><img src="news/content/shokla2.jpg" alt=""></li>
+                    <li class="glide__slide"><img src="news/content/shokla3.jpg" alt=""></li>
+                    <li class="glide__slide"><img src="news/content/shokla4.jpg" alt=""></li>
+                    <li class="glide__slide"><img src="news/content/shokla5.jpg" alt=""></li>
+                    <li class="glide__slide"><img src="news/content/shokla6.jpg" alt=""></li>
+                    <li class="glide__slide"><img src="news/content/shokla7.jpg" alt=""></li>
+                    <li class="glide__slide"><img src="news/content/shokla8.jpg" alt=""></li>
+                    <li class="glide__slide"><img src="news/content/shokla9.jpg" alt=""></li>
                 </ul>
             </div>
         </div>
 
         <script>
-            // Инициализация Glide
-            new Glide('.glide').mount();
+            new Glide('.glide', {
+                type: 'carousel',
+                autoplay: 3500,
+                hoverpause: true
+            }).mount();
         </script>
 
+        <p class="footer">Хуеград™, все права защищены <span style="font-size: 6px;">(нет)</span></p>
+    </div>
 
-        <p style="bottom: 0; position: absolute;">Хуеград™, все права защищены <span
-                style="font-size: 6px;">(нет)</span></p>
 </body>
 
 </html>
