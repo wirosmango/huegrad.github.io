@@ -47,6 +47,7 @@ body {
   object-fit: cover;
   /* обрезает видео под размер, без искажений */
   display: block;
+  padding-bottom: 1%;
 }
 
 .news-list {
@@ -87,16 +88,13 @@ body {
 }
 
 .news {
-  justify-content: center margin-top: 3%;
+  margin-top: 3%;
   margin-left: 20%;
   margin-right: 20%;
   border: 2px solid #585887;
   background: #1e1e2e;
   padding-left: 2%;
-}
-
-.card-video {
-  padding-bottom: 1%;
+  padding-bottom: 2%;
 }
 
 .cards-container {
@@ -126,6 +124,8 @@ body {
   height: auto;
   max-height: 500px;
   object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 header {
@@ -135,7 +135,7 @@ header {
 }
 
 .top-menu {
-  position: bottom;
+  position: sticky;
   /* Закрепляет меню на экране */
   top: 0;
   /* Прижимает к верхнему краю */
@@ -147,6 +147,7 @@ header {
   /* Цвет фона */
   padding: 10px 0;
   /* Отступы сверху и снизу */
+  z-index: 10;
 }
 
 .top-menu a {
@@ -250,6 +251,4 @@ a:hover {
     background: #1e1e2e;
     box-sizing: border-box;
   }
-}
-}
 }
