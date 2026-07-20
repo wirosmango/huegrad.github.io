@@ -4,6 +4,13 @@ ul {
   background-color: #585b70;
   border-radius: 5px;
 }
+.heroi-huegrada {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #324c8c;
+  background-image: url(fon.png);
+  background-size: cover;
+  border-radius: 5px;
+}
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #cdd6f4;
