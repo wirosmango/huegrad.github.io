@@ -1,40 +1,51 @@
 ul {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #cdd6f4;
+  color: #f3e9ff;
   background-color: #585b70;
   border-radius: 5px;
 }
+
 .heroi-huegrada {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #324c8c;
+  color: #fcfcfc;
   background-image: url(fon.png);
   background-size: cover;
   border-radius: 5px;
 }
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #cdd6f4;
   background-color: #1e1e2e;
   /*mellstroy pidors */
 }
+
 .card {
-  width: 300px; /* Ширина карточки */
-  border-radius: 20px; /* Закругляем углы */
-  overflow:-moz-hidden-unscrollable; /* Прячем все, что выходит за углы */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем мягкую тень */
-  font-family: sans-serif; /* Простой шрифт */
+  width: 300px;
+  /* Ширина карточки */
+  border-radius: 20px;
+  /* Закругляем углы */
+  overflow: -moz-hidden-unscrollable;
+  /* Прячем все, что выходит за углы */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Добавляем мягкую тень */
+  font-family: sans-serif;
+  /* Простой шрифт */
   max-width: 50%;
 }
 
 .card img {
-  width: 80%; /* Картинка занимает всю ширину */
+  width: 80%;
+  /* Картинка занимает всю ширину */
   height: auto;
 }
 
 .card-video {
   width: 500px;
-  max-width: 100%;         /* фиксированная высота */
-  object-fit: cover;     /* обрезает видео под размер, без искажений */
+  max-width: 100%;
+  /* фиксированная высота */
+  object-fit: cover;
+  /* обрезает видео под размер, без искажений */
   display: block;
 }
 
@@ -48,6 +59,7 @@ body {
   background: #1e1e2e;
 
 }
+
 .news-item {
   display: flex;
   align-items: baseline;
@@ -55,25 +67,27 @@ body {
   padding: 3px 20px;
   justify-content: left;
 }
+
 .news-item time {
   flex-shrink: 0;
   font-size: 0.85rem;
   color: #888;
   width: 90px;
 }
+
 .news-item a {
   color: #cdd6f4;
   text-decoration: none;
   font-size: 1rem;
   line-height: 1.4;
 }
+
 .news-item a:hover {
   text-decoration: underline;
 }
 
 .news {
-  justify-content: center
-  margin-top: 3%;
+  justify-content: center margin-top: 3%;
   margin-left: 20%;
   margin-right: 20%;
   border: 2px solid #585887;
@@ -84,11 +98,15 @@ body {
 .card-video {
   padding-bottom: 1%;
 }
+
 .cards-container {
-  display: flex; /* Включаем Flexbox */
-  gap: 20px; /* Расстояние между карточками */
-  flex-wrap: wrap; /* Карточки переносятся на новую строку, если не влезают */
-  justify-content: center; 
+  display: flex;
+  /* Включаем Flexbox */
+  gap: 20px;
+  /* Расстояние между карточками */
+  flex-wrap: wrap;
+  /* Карточки переносятся на новую строку, если не влезают */
+  justify-content: center;
 }
 
 .card h2 {
@@ -97,17 +115,17 @@ body {
 
 
 .glide {
-    max-width: 800px;
-    margin: 30px auto;
-    overflow: hidden;
+  max-width: 800px;
+  margin: 30px auto;
+  overflow: hidden;
 }
 
 .glide__slide img {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 500px;
-    object-fit: cover;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
 }
 
 header {
@@ -117,31 +135,40 @@ header {
 }
 
 .top-menu {
-    position: bottom; /* Закрепляет меню на экране */
-    top: 0;          /* Прижимает к верхнему краю */
-    left: 0;         /* Прижимает к левому краю */
-    width: 100%;     /* Растягивает меню на весь экран */
-    background-color: transparent; /* Цвет фона */
-    padding: 10px 0; /* Отступы сверху и снизу */
+  position: bottom;
+  /* Закрепляет меню на экране */
+  top: 0;
+  /* Прижимает к верхнему краю */
+  left: 0;
+  /* Прижимает к левому краю */
+  width: 100%;
+  /* Растягивает меню на весь экран */
+  background-color: transparent;
+  /* Цвет фона */
+  padding: 10px 0;
+  /* Отступы сверху и снизу */
 }
 
 .top-menu a {
-    color: white;    /* Цвет текста */
-    text-decoration: none; /* Убирает подчеркивание */
-    margin: 0 15px;  /* Расстояние между ссылками */
+  color: white;
+  /* Цвет текста */
+  text-decoration: none;
+  /* Убирает подчеркивание */
+  margin: 0 15px;
+  /* Расстояние между ссылками */
 }
 
 a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    padding: 5px 5px; 
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 5px 5px;
 }
 
 a:hover {
-    color: #cdd6f4;
-    background-color: #1e1e2e;
-    border-radius: 5px;
+  color: #cdd6f4;
+  background-color: #1e1e2e;
+  border-radius: 5px;
 }
 
 .center {
@@ -149,14 +176,14 @@ a:hover {
 }
 
 .soundcloud {
-  text-align: center; 
+  text-align: center;
   color: #cccccc;
   line-break: anywhere;
   word-break: normal;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis; 
-  font-family: Lucida Sans Unicode,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-overflow: ellipsis;
+  font-family: Lucida Sans Unicode, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 100;
 }
 
@@ -179,8 +206,8 @@ a:hover {
   background-size: 400% 400%;
   /* Применяем анимацию с длительностью 15 секунд, бесконечно и с плавным переходом */
   animation: gradientShift 15s ease infinite;
-   -webkit-background-clip: text;
-   background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
@@ -190,9 +217,11 @@ a:hover {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -203,6 +232,7 @@ a:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (max-width: 500px) {
   .news-list {
     margin-top: 15%;
@@ -210,7 +240,8 @@ a:hover {
     margin-left: 2%;
     margin-right: 2%;
   }
-.news {
+
+  .news {
     max-width: 900px;
     width: 90%;
     margin: 30px auto;
@@ -218,8 +249,7 @@ a:hover {
     border: 2px solid #585887;
     background: #1e1e2e;
     box-sizing: border-box;
-}
-  }
   }
 }
-
+}
+}

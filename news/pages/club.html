@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Хуеград</title>
+    <meta charset="utf-8" />
+    <base href="/huegrad.github.io/">
+    <link href="style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+</head>
+
+
+<body>
+    <header class="top-background">
+        <title>Хуеград</title>
+        <nav class="top-menu">
+            <a href="index.html">Главная</a>
+            <a href="drochka.html">Дрочка</a>
+            <a href="mods/index.html">Доп. ресурсы</a>
+            <a href="news.html">Новости</a>
+        </nav>
+    </header>
+
+
+    <div class="news">
+        <h1>ПК клуб в Хуеграде!</h1>
+        <p>Спустя продолжительное время игрок Pabalo666 с нашей поддержкой всё-таки построил ПК клуб в Хуеграде! Фото
+            прилагаются.</p>
+    </div>
+
+
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                <li class="glide__slide"><img src="news/content/club.png"></li>
+                <li class="glide__slide"><img src="news/content/club2.png"></li>
+                <li class="glide__slide"><img src="news/content/club3.png"></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        new Glide('.glide', {
+            type: 'carousel',
+            autoplay: 3500,
+            hoverpause: true
+        }).mount();
+    </script>
+
+
+    <p class="footer">Хуеград™, все права защищены <span style="font-size: 6px;">(нет)</span></p>
+
+</body>
+
+</html>
