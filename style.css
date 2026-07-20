@@ -118,14 +118,18 @@ body {
   overflow: hidden;
 }
 
+.glide__slide {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
 .glide__slide img {
   display: block;
   width: 100%;
   height: auto;
   max-height: 500px;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 header {
