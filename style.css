@@ -20,6 +20,12 @@ body {
   /*mellstroy pidors */
 }
 
+.title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #cdd6f4;
+  text-align: center;
+}
+
 .card {
   width: 300px;
   /* Ширина карточки */
@@ -95,6 +101,13 @@ body {
   background: #1e1e2e;
   padding-left: 2%;
   padding-bottom: 2%;
+}
+
+.news h3 {
+  border: 2px solid #585887;
+  margin-right: 3%;
+  margin-left: auto;
+  color: #cdd6f4;
 }
 
 .cards-container {
