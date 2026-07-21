@@ -268,4 +268,19 @@ a:hover {
     background: #1e1e2e;
     box-sizing: border-box;
   }
+  .top-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    color: #4c536d;
+  }
+  header {
+    background-image: url(huegrad/images/huegrad-phone-banner.png);
+    padding: 10px;
+    text-align: center;
+  }
+  .heroi-huegrada {
+    color: #cdd6f4;
+    background-color: #585b70;;
+  }
 }
