@@ -99,8 +99,8 @@ body {
   margin-right: 20%;
   border: 2px solid #585887;
   background: #1e1e2e;
-  padding-left: 2%;
-  padding-bottom: 2%;
+  padding: 2% 2%;
+  box-sizing: border-box;
 }
 
 .news h3 {
@@ -268,19 +268,23 @@ a:hover {
     background: #1e1e2e;
     box-sizing: border-box;
   }
+
   .top-menu {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     color: #4c536d;
   }
+
   header {
     background-image: url(huegrad/images/huegrad-phone-banner.png);
     padding: 10px;
     text-align: center;
   }
+
   .heroi-huegrada {
     color: #cdd6f4;
-    background-color: #585b70;;
+    background-color: #585b70;
+    ;
   }
 }
