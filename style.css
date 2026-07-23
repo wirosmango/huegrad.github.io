@@ -132,7 +132,7 @@ body {
 }
 
 .glide__slide {
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
@@ -228,6 +228,70 @@ a:hover {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+.form-container {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 32px;
+  background: #1e1e2e;
+  border-radius: 5px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.form-container h2 {
+  margin: 0 0 24px;
+  color: #cdd6f4;
+  font-size: 22px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #cdd6f4;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 13px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover {
+  background: #4f46e5;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+#status {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 14px;
+  color: #16a34a;min-height: 18px;
 }
 
 /* Описываем ключевые кадры движения */
